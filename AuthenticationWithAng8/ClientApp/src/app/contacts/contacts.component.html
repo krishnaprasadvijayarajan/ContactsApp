@@ -1,20 +1,23 @@
 
-<div class="container">
+<div class="container mat-sidenav-container">
 
 
   <form [formGroup]="EmpForm" (ngSubmit)="this[EventValue]()">
 
 
-      <h3>Employee Table CRUD Operation</h3>
+      <h3>Contacts CRUD Operation</h3>
       <div class="row">
 
       <table class="table">
       <tr>
-        <td>Name</td>
         <td>
           <input type="hidden" formControlName="contactID">
           <input type="hidden" formControlName="UserId">
-          <input type="text" formControlName="contactName">
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="contactName">
+          </mat-form-field>
+
           <div *ngIf="submitted && EmpForm.controls.contactName.errors" class="text-danger">
             <div *ngIf="EmpForm.controls.contactName.errors.required">Name is required</div>
           </div>
@@ -22,9 +25,13 @@
       </tr>
 
       <tr>
-        <td>Address</td>
         <td>
-          <input type="text" formControlName="address">
+          <!-- <input type="text" formControlName="address"> -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+
           <div *ngIf="submitted && EmpForm.controls.Address.errors" class="text-danger">
             <div *ngIf="EmpForm.controls.Address.errors.required">Address is required</div>
           </div>
@@ -32,9 +39,9 @@
         </td>
       </tr>
       <tr>
-
         <td colspan="2">
-          <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+          <button mat-raised-button color="primary" type="submit" >{{EventValue}}</button>
+          <!-- class="btn btn-primary" -->
         </td>
       </tr>
 
@@ -58,12 +65,13 @@
           <td>{{d.contactName}}</td>
           <td>{{d.UserId}}</td>
           <td>{{d.address}}</td>
-          <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
-          <td><a (click)="deleteData(d.ContactID)" class="btn btn-danger">Delete</a></td>
+          <!-- <td><a (click)="EditData(d)" class="mat-stroked-button" >Edit</a></td> -->
+          <td><a mat-raised-button color="accent" (click)="EditData(d)">Edit</a></td>
+          <!-- <td><a (click)="deleteData(d.ContactID)" class="mat-stroked-button">Delete</a></td> -->
+          <td><a mat-raised-button color="warn" (click)="deleteData(d.ContactID)">Delete</a></td>
         </tr>
       </table>
     </div>
-
   </form>
 
   </div>

@@ -13,7 +13,8 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import {ServiceService} from '../api-authorization/service.service';
 import { ContactsComponent } from './contacts/contacts.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatInputModule,MatToolbarModule,MatIconModule,MatTabsModule  } from '@angular/material';
 // import { MaterialContactComponent } from '.c:/Users/krish/source/repos/AuthenticationWithAng8/AuthenticationWithAng8/ClientApp/src/MaterialContact/MaterialContact.component';
 // import { MyComponentComponent } from '.c:/Users/krish/source/repos/AuthenticationWithAng8/AuthenticationWithAng8/ClientApp/src/my-component/my-component.component';
 
@@ -33,8 +34,12 @@ import { ContactsComponent } from './contacts/contacts.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule ,
     FormsModule,
+    MatToolbarModule,
+    MatTabsModule,
     ReactiveFormsModule,
     ApiAuthorizationModule,
     RouterModule.forRoot([
@@ -45,7 +50,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
 
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
