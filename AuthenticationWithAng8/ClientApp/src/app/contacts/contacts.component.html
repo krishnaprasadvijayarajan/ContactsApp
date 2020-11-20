@@ -1,0 +1,99 @@
+
+<div class="container">
+
+
+  <form [formGroup]="EmpForm" (ngSubmit)="this[EventValue]()">
+
+
+      <h3>Employee Table CRUD Operation</h3>
+      <div class="row">
+
+      <table class="table">
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="hidden" formControlName="contactID">
+          <input type="hidden" formControlName="UserId">
+          <input type="text" formControlName="contactName">
+          <div *ngIf="submitted && EmpForm.controls.contactName.errors" class="text-danger">
+            <div *ngIf="EmpForm.controls.contactName.errors.required">Name is required</div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Address</td>
+        <td>
+          <input type="text" formControlName="address">
+          <div *ngIf="submitted && EmpForm.controls.Address.errors" class="text-danger">
+            <div *ngIf="EmpForm.controls.Address.errors.required">Address is required</div>
+          </div>
+
+        </td>
+      </tr>
+      <tr>
+
+        <td colspan="2">
+          <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+        </td>
+      </tr>
+
+    </table>
+    </div>
+    <div class="row">
+      <table class="table table-striped">
+        <tr>
+
+
+          <td>Contact</td>
+          <td>Name</td>
+          <td></td>
+          <td> Address </td>
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
+
+        <tr *ngFor="let d of data">
+          <td key={d.Id}>{{d.contactID}}</td>
+          <td>{{d.contactName}}</td>
+          <td>{{d.UserId}}</td>
+          <td>{{d.address}}</td>
+          <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
+          <td><a (click)="deleteData(d.ContactID)" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </table>
+    </div>
+
+  </form>
+
+  </div>
+
+
+ <!-- <form>
+ <label class="mdc-text-field mdc-text-field--filled username">
+  <span class="mdc-text-field__ripple"></span>
+  <input type="text" class="mdc-text-field__input" aria-labelledby="username-label" name="username" required>
+  <span class="mdc-floating-label" id="username-label">Username</span>
+  <span class="mdc-line-ripple"></span>
+</label>
+<label class="mdc-text-field mdc-text-field--filled password">
+  <span class="mdc-text-field__ripple"></span>
+  <input type="password" class="mdc-text-field__input" aria-labelledby="password-label" name="password" required minlength="8">
+  <span class="mdc-floating-label" id="password-label">Password</span>
+  <span class="mdc-line-ripple"></span>
+</label>
+<div class="button-container">
+  <button type="button" class="mdc-button cancel">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label">
+      Cancel
+    </span>
+  </button>
+  <button class="mdc-button mdc-button--raised next">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label">
+      Next
+    </span>
+  </button>
+</div>
+</form> -->
